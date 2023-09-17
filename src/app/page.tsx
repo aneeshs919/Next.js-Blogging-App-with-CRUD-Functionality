@@ -26,9 +26,13 @@ export default function Home () {
 
   // Function to retrieve data from local storage
   const getDataFromLocalStorage = () => {
-    const jsonDataString = localStorage.getItem('BLOG_DATA')
-    const jsonData: BlogData[] = JSON.parse(jsonDataString || '[]')
-    setData(jsonData)
+    try {
+      const jsonDataString = localStorage.getItem('BLOG_DATA')
+      const jsonData: BlogData[] = JSON.parse(jsonDataString || '[]')
+      setData(jsonData)
+    } catch (error) {
+      console.error('Error storing data in localstorage:', error)
+    }
   }
 
   useEffect(() => {
