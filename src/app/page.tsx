@@ -69,7 +69,10 @@ export default function Home () {
               handleReadMore={() => goToBlog(blogs.blog_id)}
             />
           ))}
-          <CreateNewBlog router={router} id={data.length + 1 || 1} />
+          <CreateNewBlog
+            router={router}
+            id={Math.floor(Math.random() * 100) + data.length || 1}
+          />
         </div>
       </div>
       {showModal && <BlogModal data={data} />}
